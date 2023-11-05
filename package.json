@@ -1,0 +1,18 @@
+{
+  "name": "typescriptonly",
+  "version": "1.0.0",
+  "description": "Playwright tests without the use of Cucumber",
+  "main": "index.js",
+  "scripts": {
+    "apiTests": "npx playwright test tests/api-tests/",
+    "uiTests": "npx playwright test tests/ui-tests/"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.39.0",
+    "@types/node": "^20.8.10",
+    "allure-playwright": "^2.9.2"
+  }
+}
