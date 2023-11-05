@@ -8,8 +8,10 @@ import { dateofBirth } from '../../Pages/dateofBirth';
 import { emailaddress } from '../../Pages/emailaddress';
 import { mobilephoneNumber } from '../../Pages/mobilephoneNumber';
 import { maritalStatus } from '../../Pages/maritalStatus';
+import { globalElements } from '../../Pages/globalElements';
 
 test('Enter a valid mobile number', async ({ page }) => {
+  const globalelementsPage = new globalElements(page);
   const loanamountPage = new borrowloanAmount(page);
   const loandurationPage = new loanDuration(page);
   const debtconsolidationPage = new debtConsolidation(page);
@@ -21,21 +23,20 @@ test('Enter a valid mobile number', async ({ page }) => {
   const maritalstatusPage = new maritalStatus(page);
 
 
-  await page.goto('https://qa-5.monevo.com/apply');
-  await page.goto('https://qa-5.monevo.com/apply/loan-details/amount');
+  await page.goto("/apply");
   await loanamountPage.inputloanAmount();
-  await loanamountPage.continueAction();
+  await globalelementsPage.continueAction();
   await loandurationPage.selectloanDuration();
   await debtconsolidationPage.selectdebtConsolidation();
   await titlePage.selectTitle();
   await usernamePage.enterName(); 
-  await loanamountPage.continueAction();
+  await globalelementsPage.continueAction();
   await dateofbirthPage.enterdateofBirth();
-  await loanamountPage.continueAction();
+  await globalelementsPage.continueAction();
   await emailaddressPage.enteremailAddress();
-  await loanamountPage.continueAction();
+  await globalelementsPage.continueAction();
   await mobilenumberPage.entervalidmobileNumber();
-  await loanamountPage.continueAction();
+  await globalelementsPage.continueAction();
 
   //Assertion to check whether the URL of the marital status screen is displayed 
   await maritalstatusPage.maritalstatusUrl;
@@ -47,7 +48,7 @@ test('Enter a valid mobile number', async ({ page }) => {
 //User enters an alternative mobile number
   await page.locator('#mobileNumber').clear();
   await mobilenumberPage.enterupdatedmobileNumber;
-  await loanamountPage.continueAction();
+  await globalelementsPage.continueAction();
 
 //Assertion to check whether the URL of the marital status screen is displayed 
 await maritalstatusPage.maritalstatusUrl;
