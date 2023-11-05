@@ -11,7 +11,7 @@ constructor(page: Page) {
 
 }
 
-/*Function that is called which passes the continueButton variable to perform the action of 
+/*Method that is called which passes the continueButton variable to perform the action of 
 clicking the Continue button*/
 async continueAction() {
     await this.continueButton.click();

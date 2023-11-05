@@ -9,7 +9,7 @@ constructor(page: Page) {
     this.debtConsolidation = page.getByRole('button', { name: 'Debt consolidation' });
 }
 
-/*Function that is called which passes the debtConsolidation variable from the constructor to click 
+/*Method that is called which passes the debtConsolidation variable from the constructor to click 
 on the debt consolidation option for the use of a loan*/
 async selectdebtConsolidation() {
     await this.debtConsolidation.click();

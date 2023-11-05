@@ -9,7 +9,7 @@ constructor(page: Page) {
     this.useremailAddress = page.locator('#emailAddress');
 }
 
-/*Function that is called which passes the useremailaddress variable from the constructor to 
+/*Method that is called which passes the useremailaddress variable from the constructor to 
 enter an email address*/
 async enteremailAddress() {
     await this.useremailAddress.fill('test@test.com');

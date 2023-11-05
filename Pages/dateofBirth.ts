@@ -9,7 +9,7 @@ constructor(page: Page) {
     this.dateofBirth = page.locator('#dateOfBirth');
 }
 
-/*Function that is called which passes the dateofBirth variable from the constructor to click 
+/*Method that is called which passes the dateofBirth variable from the constructor to click 
 into the date of birth field and populate it with the value of 14/02/2000*/
 async enterdateofBirth() {
     await this.dateofBirth.fill('14/02/2000');

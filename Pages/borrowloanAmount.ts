@@ -11,7 +11,7 @@ constructor(page: Page) {
 
 }
 
-/*Function that is called which passes the loanAmount variable from the constructor to click 
+/*Method that is called which passes the loanAmount variable from the constructor to click 
 into the loan amount field and populate it with the value of 1000*/
 async inputloanAmount() {
     await this.loanAmount.click();
