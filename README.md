@@ -44,6 +44,11 @@ The following prerequisites must have been met for successful use of the framewo
 - Node and NPM must be installed in order to run npm commands in the CLI - Instructions on how to install this on Windows, Mac or Linux are available here https://kinsta.com/blog/how-to-install-node-js/
 - Git must be installed in order to clone the frameworks repository - Git can be downloaded for Windows, Mac and Linux operating systems from https://git-scm.com/downloads
 - To view the codebase, a suitable IDE (i.e. vs code) needs to have been installed
+- Java JDK must be installed in order to generate Allure Reports. Instructions on setting up path variables on Windows, Mac and Linux can be found in the following locations:
+    -Windows - https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html
+    -Mac - https://www.sajeconsultants.com/how-to-set-java_home-on-mac-os-x/
+    -Linux - https://www.ibm.com/docs/ja/b2b-integrator/6.0.3?topic=variables-setting-java-linux
+
 
 #Installation instructions
 
