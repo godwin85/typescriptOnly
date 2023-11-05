@@ -11,6 +11,7 @@ constructor(page: Page) {
     this.userlastName = page.locator('#lastName');
 }
 
+//Method that passes the 'userfirstname and userlastname variables to input a first and last name for a customer
 async enterName() {
     await this.userfirstName.fill('Test');
     await this.userlastName.fill('Tester');

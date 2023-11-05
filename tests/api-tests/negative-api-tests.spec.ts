@@ -6,7 +6,6 @@ test('Enter an invalid mobile number which is < 11 digits', async ({ request }) 
     data: {
         phone: "0754990106"
     }
-    expect(setResponse.ok()).toBeTruthy;
     expect(setResponse.status()).toBe(400);
 });
 
@@ -16,7 +15,6 @@ test('Enter an invalid mobile number which is > 11 digits', async ({ request }) 
     data: {
         phone: "075499010688"
     }
-    expect(setResponse.ok()).toBeTruthy;
     expect(setResponse.status()).toBe(400);
 });
 
@@ -26,7 +24,6 @@ test('Enter a hiphenated mobile phone number', async ({ request }) => {
     data: {
         phone: "0754-999-1020"
     }
-    expect(setResponse.ok()).toBeTruthy;
     expect(setResponse.status()).toBe(400);
 });
 
@@ -36,7 +33,6 @@ test('Enter an empty mobile phone number', async ({ request }) => {
     data: {
         phone: ""
     }
-    expect(setResponse.ok()).toBeTruthy;
     expect(setResponse.status()).toBe(400);
 });
 
@@ -46,6 +42,5 @@ test('Enter an invalid mobile number for which the second digit is 8 and not 7',
     data: {
         phone: "07549901068"
     }
-    expect(setResponse.ok()).toBeTruthy;
     expect(setResponse.status()).toBe(400);
 });

@@ -9,6 +9,7 @@ constructor(page: Page) {
     this.mobileNumber = page.locator('#mobileNumber');
 }
 
+//All methods below pass the mobileNumber variable as part of the action to input an invalid number
 async entervalidmobileNumber() {
     await this.mobileNumber.fill('07549583726');
   }

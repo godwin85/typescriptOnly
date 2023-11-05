@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
+
+//Imported pages containing page objects and methods covering various actions performed with these via the UI
 import { borrowloanAmount} from '../../Pages/borrowloanAmount';
 import { loanDuration} from '../../Pages/loanDuration';
-import { debtConsolidation } from '../../Pages/debtConsolidation';
+import { loanUses } from '../../Pages/loanUses';
 import { endUserTitle } from '../../Pages/endUserTitle';
 import { userName } from '../../Pages/userName';
 import { dateofBirth } from '../../Pages/dateofBirth';
@@ -11,10 +13,12 @@ import { maritalStatus } from '../../Pages/maritalStatus';
 import { globalElements } from '../../Pages/globalElements';
 
 test('Enter a valid mobile number', async ({ page }) => {
+
+  //Const variables that are passed to reference an imported page before specifying an action with a page object
   const globalelementsPage = new globalElements(page);
   const loanamountPage = new borrowloanAmount(page);
   const loandurationPage = new loanDuration(page);
-  const debtconsolidationPage = new debtConsolidation(page);
+  const loanusagePage = new loanUses(page);
   const titlePage = new endUserTitle(page);
   const usernamePage = new userName(page);
   const dateofbirthPage = new dateofBirth(page);
@@ -23,32 +27,59 @@ test('Enter a valid mobile number', async ({ page }) => {
   const maritalstatusPage = new maritalStatus(page);
 
 
-  await page.goto("/apply");
-  await loanamountPage.inputloanAmount();
-  await globalelementsPage.continueAction();
-  await loandurationPage.selectloanDuration();
-  await debtconsolidationPage.selectdebtConsolidation();
-  await titlePage.selectTitle();
-  await usernamePage.enterName(); 
-  await globalelementsPage.continueAction();
-  await dateofbirthPage.enterdateofBirth();
-  await globalelementsPage.continueAction();
-  await emailaddressPage.enteremailAddress();
-  await globalelementsPage.continueAction();
-  await mobilenumberPage.entervalidmobileNumber();
-  await globalelementsPage.continueAction();
+ //Opens the base URL
+ await page.goto("/apply");
 
-  //Assertion to check whether the URL of the marital status screen is displayed 
-  await maritalstatusPage.maritalstatusUrl;
+ //Performs the customer action to specify a loan amount
+ await loanamountPage.inputloanAmount();
+
+ //Performs the customer action to progress to the Loan Duration screen
+ await globalelementsPage.continueAction();
+
+ //Performs the action to select a duration. In this case 1 year
+ await loandurationPage.selectloanDuration();
+
+ //Performs the action to select a debt consolidation option
+ await loanusagePage.selectdebtConsolidation();
+
+ //Performs the action to select a title. In this case 'Mr'
+ await titlePage.selectTitle();
+
+ //Peforms the action to enter both the customer first and last names
+ await usernamePage.enterName(); 
+
+ //Performs the action to continue to the Date of Birth screen
+ await globalelementsPage.continueAction();
+
+ //Performs the action to enter a date of birth
+ await dateofbirthPage.enterdateofBirth();
+
+ //Performs the action to continue to the email address screen
+ await globalelementsPage.continueAction();
+
+ //Performs the action to enter an email address
+ await emailaddressPage.enteremailAddress();
+
+ //Performs the action to continue to the mobile number screen
+ await globalelementsPage.continueAction();
+
+//Performs the action to enter a valid mobile number  
+await mobilenumberPage.entervalidmobileNumber();
+
+//Performs the action to progress to the Marital Status screen
+await globalelementsPage.continueAction();
+
+//Assertion to check whether the URL of the marital status screen is displayed 
+await maritalstatusPage.maritalstatusUrl;
   
-  //Assertion to check whether the correct mobile number is displayed on the mobile number entry screen
-  await page.getByText('back').click();
-  await mobilenumberPage.checkinitialmobileNumber;
+//Assertion to check whether the correct mobile number is displayed on the mobile number entry screen
+await page.getByText('back').click();
+await mobilenumberPage.checkinitialmobileNumber;
 
 //User enters an alternative mobile number
-  await page.locator('#mobileNumber').clear();
-  await mobilenumberPage.enterupdatedmobileNumber;
-  await globalelementsPage.continueAction();
+await page.locator('#mobileNumber').clear();
+await mobilenumberPage.enterupdatedmobileNumber;
+await globalelementsPage.continueAction();
 
 //Assertion to check whether the URL of the marital status screen is displayed 
 await maritalstatusPage.maritalstatusUrl;

@@ -12,6 +12,8 @@ This Readme contains the following information:
 - Instructions to run the tests with docker
 - Generating reports with Allure
 
+
+
 #Overview of tests
 
 The framework includes the following test types:
@@ -22,9 +24,17 @@ The framework includes the following test types:
     - The API tests are stored in the directory 'tests/api-tests'
 
 -UI tests - There are two end-to-end UI tests that have been created with a specific focus on the mobile phone number validation:
-    - A positive test that involves inputing a valid mobile phone number. This also tests whether input values are saved and can be successfully updated if the customer has to update their mobile number.
-    - A negatove test that involves inputting an invalid mobile number which has < 11 digits and validating whether the member remains on the mobile number screen with the expected error message being displayed.
+    - A positive test that involves:
+        - inputing a valid mobile phone number and progressing to the Marital Status screen
+        - Navigating back to the Mobile Number screen and updating the phone number value before progressing to the Marital Status screen
+        - Returning to the mobile number screen and checking whether the updated value has been saved
+
+    - A negatove test that involves: 
+        - Inputting an array of invalid mobile numbers
+        - Checking whether each value is rejected with the expected error message being returned
+        - Checking whetehr the customer does not progress to the Marital Status screen
 - The UI tests are stored in the directory 'tests/ui-tests'
+
 
 #Overview of technnology stack
 
@@ -35,6 +45,8 @@ The technology stack utilised for the development of this framework includes the
 -Playwright
 -Typescript
 -Allure Reports
+
+
 
 #Prerequisites
 
@@ -58,10 +70,13 @@ The following prerequisites must have been met for successful use of the framewo
 4. Change directory from the Desktop to the cloned directory 'TypescriptOnly'
 5. Run the command 'npm i' to install all node modules required to run Playwright and Allure Reports
 
+
 #Instructions to run the tests without Docker
 
 1. Via your Operating System Command Line, access the cloned framework directory
 2. Type the command 'npx playwright test'. All tests will be executed after running the command
+
+
 
 #Instructions to run the tests with Docker
 
@@ -78,3 +93,8 @@ During the execution of the tests, results information is captured in a json fil
 1. When the execution of the tests has ended, run the following commands to generate and open an Allure Report:
     -npx allure generate ./allure-results --clean
     -npx allure open ./allure-report
+
+
+#Additional notes
+
+Tests can be run in the Firefox, Chrome and Webkit browsers. The project is currently setup to run in Chrome only. Please visit 'playwright.config.ts' where browsers can be commented out and uncommented to include or exclude them from the test execution process.
