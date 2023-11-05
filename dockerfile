@@ -11,7 +11,6 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # COPY the needed files to the app folder in Docker image
-COPY playwright-report /app/
 COPY Pages /app/Pages
 COPY package.json /app/
 COPY tests/ /app/tests/
