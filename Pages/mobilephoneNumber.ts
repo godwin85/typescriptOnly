@@ -9,25 +9,20 @@ constructor(page: Page) {
     this.mobileNumber = page.locator('#mobileNumber');
 }
 
-//All methods below pass the mobileNumber variable as part of the action to input an invalid number
+
+//Method called to enter a valid mobile phone number to test form validation
 async entervalidmobileNumber() {
-    await this.mobileNumber.fill('07549583726');
-  }
-
-  async enterinvalidmobileNumber() {
-    await this.mobileNumber.fill('0161-223-2232');
-  }
-
-async checkinitialmobileNumber(){
-    await expect(this.mobileNumber).toHaveValue('07549583726');
+  await this.mobileNumber.fill('07897641544');
 }
 
-async enterupdatedmobileNumber() {
-    await this.mobileNumber.fill('07549583728');
-  }
+//Method called to enter an invalid phone number to form validation
+async enterinvalidmobileNumber() {
+  await this.mobileNumber.fill('310-323-258');
+}
 
-async checkupdatedmobileNumber(){
-    await expect(this.mobileNumber).toHaveValue('07546787678');
+//Method called to check whether a specified mobile number has been saved 
+async checkmobileNumber(){
+    await expect(this.mobileNumber).toHaveValue('07897641544');
 }
 
 }

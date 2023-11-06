@@ -14,7 +14,7 @@ import { globalElements } from '../../Pages/globalElements';
 
 test('Enter a valid mobile number', async ({ page }) => {
 
-  //Const variables that are passed to reference an imported page before specifying an action with a page object
+  //Const variables that are passed to reference an exported page before specifying an action with a page object
   const globalelementsPage = new globalElements(page);
   const loanamountPage = new borrowloanAmount(page);
   const loandurationPage = new loanDuration(page);
@@ -70,21 +70,15 @@ await mobilenumberPage.entervalidmobileNumber();
 await globalelementsPage.continueAction();
 
 //Assertion to check whether the URL of the marital status screen is displayed 
-await maritalstatusPage.maritalstatusUrl;
-  
-//Assertion to check whether the correct mobile number is displayed on the mobile number entry screen
+await maritalstatusPage.maritalstatusUrl();
+
+//Navigating back to mobile number screen to check if the mobile number has been saved
 await page.getByText('back').click();
-await mobilenumberPage.checkinitialmobileNumber;
+await expect(page).toHaveURL(/.*mobile-number/);
 
-//User enters an alternative mobile number
-await page.locator('#mobileNumber').clear();
-await mobilenumberPage.enterupdatedmobileNumber;
-await globalelementsPage.continueAction();
+//Assertion to check whether the validated mobile number has been saved
+await mobilenumberPage.checkmobileNumber();
 
-//Assertion to check whether the URL of the marital status screen is displayed 
-await maritalstatusPage.maritalstatusUrl;
 
-//Assertion to check whether the correct mobile number is displayed on the mobile number entry screen
-await page.getByText('back').click();
-await mobilenumberPage.checkupdatedmobileNumber;
 });
+
